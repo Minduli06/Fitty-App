@@ -86,76 +86,79 @@ public class Third1 extends AppCompatActivity {
             public void onClick(View v) {
                 if(MTimeRunning){
                     stoptimer();
-
-
                 }
                 else {
                     startTimer();
-
-
                 }
             }
         });
 
+        private void stoptimer(){
+            countDownTimer.cancel();
+            MTimeRunning=false;
+            startBtn.setText("START");
+        }
 
+        private void startTimer(){
+            // Get the current time value from a TextView and convert it to seconds
+            final CharSequence value1 = mtextview.getText();
+            String num1 = value1.toString();
+            String num2 = num1.substring(0, 2);
+            String num3 = num1.substring(3, 5);
+            final int number = Integer.valueOf(num2) * 60 + Integer.valueOf(num3);
 
+            // Set the timer duration in milliseconds
+            MTimeLeftinmillis = number * 1000;
 
-
-
-    }
-
-    private void stoptimer(){
-
-        countDownTimer.cancel();
-        MTimeRunning=false;
-        startBtn.setText("START");
-    }
-
-    private void startTimer(){
-
-        final CharSequence value1=mtextview.getText();
-        String num1=value1.toString();
-        String num2=num1.substring(0,2);
-        String num3=num1.substring(3,5);
-
-
-        final int number=Integer.valueOf(num2)*60+Integer.valueOf(num3);
-        MTimeLeftinmillis=number*1000 ;
-
-        countDownTimer=new CountDownTimer(MTimeLeftinmillis,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-                MTimeLeftinmillis=millisUntilFinished;
-                updateTimer();
-
-            }
-
-            @Override
-            public void onFinish() {
-
-                int newvalue=Integer.valueOf(buttonvalue)+1;
-                if (newvalue<=7){
-
-                    Intent intent=new Intent(Third1.this,Third1.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("value",String.valueOf(newvalue));
-                    startActivity(intent);
-                }
-                else{
-
-                    newvalue=1;
-                    Intent intent=new Intent(Third1.this,Third1.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("value",String.valueOf(newvalue));
-                    startActivity(intent);
+            // Create a new CountDownTimer object and start it
+            countDownTimer = new CountDownTimer(MTimeLeftinmillis, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    // Update the remaining time and display it in a TextView
+                    MTimeLeftinmillis = millisUntilFinished;
+                    updateTimer();
                 }
 
-            }
-        }.start();
-        startBtn.setText("Pause");
-        MTimeRunning=true;
+                @Override
+                public void onFinish() {
+                    // Do something when the timer finishes, e.g. start a new activity
+                    int newvalue=Integer.valueOf(buttonvalue)+1;
+                    if (newvalue<=7){
+                        Intent intent=new Intent(Third1.this,Third1.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("value",String.valueOf(newvalue));
+                        startActivity(intent);
+                    }
+                    else{
+                        newvalue=1;
+                        Intent intent=new Intent(Third1.this,Third1.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("value",String.valueOf(newvalue));
+                        startActivity(intent);
+                    }
+                }
+            }.start();
+
+            // Set the timer running flag and update the start button text
+            MTimeRunning = true;
+            startBtn.setText("Pause");
+        }
+
+
+
+
+
+
     }
+
+//    private void stoptimer(){
+//
+//        countDownTimer.cancel();
+//        MTimeRunning=false;
+//        startBtn.setText("START");
+//    }
+
+
 
 
     /**
