@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486344199855",
+    "project_id": "fittyapp-49432",
+    "storage_bucket": "fittyapp-49432.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486344199855:android:f191b9701448caffaf8e5a",
+        "android_client_info": {
+          "package_name": "com.example.fittyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486344199855-nurc3922jq4fov7k2tvbnff71di0i5f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYKi0rCj00E3KG8YmVFXPfF3s53tXynvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486344199855-nurc3922jq4fov7k2tvbnff71di0i5f9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
